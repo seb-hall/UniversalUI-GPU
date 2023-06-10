@@ -227,6 +227,7 @@ private:
     void pickPhysicalDevice() {
 
         uint32_t deviceCount = 0;
+        vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
         std::vector<VkPhysicalDevice> devices(deviceCount);
         vkEnumeratePhysicalDevices(instance, &deviceCount, devices.data());
 
@@ -311,7 +312,19 @@ private:
     }
 
     bool isDeviceSuitable(VkPhysicalDevice device) {
-        return true;
+
+        VkPhysicalDeviceProperties deviceProperties;
+        vkGetPhysicalDeviceProperties(device, &deviceProperties);
+        printf("DEVICE: %s\n", deviceProperties.deviceName);
+
+        VkPhysicalDeviceFeatures deviceFeatures;
+        vkGetPhysicalDeviceFeatures(device, &deviceFeatures);
+
+        if ((deviceProperties.deviceType == (VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU | VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU | VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU)) && (deviceFeatures.geometryShader)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(
