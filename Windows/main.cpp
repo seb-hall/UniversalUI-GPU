@@ -314,8 +314,17 @@ private:
             throw std::runtime_error("failed to find GPUs with Vulkan support!");
         }
 
+        for (VkPhysicalDevice tempPhysicalDevice : devices) {
+            VkPhysicalDeviceProperties deviceProperties;
+            vkGetPhysicalDeviceProperties(tempPhysicalDevice, &deviceProperties);
+            printf("DEVICE FOUND: %s\n", deviceProperties.deviceName);
+        }
+
         for (const auto& device : devices) {
             if (isDeviceSuitable(device)) {
+                VkPhysicalDeviceProperties deviceProperties;
+                vkGetPhysicalDeviceProperties(device, &deviceProperties);
+                printf("%s SELECTED\n", deviceProperties.deviceName);
                 physicalDevice = device;
                 break;
             }
@@ -864,7 +873,6 @@ private:
 
         VkPhysicalDeviceProperties deviceProperties;
         vkGetPhysicalDeviceProperties(device, &deviceProperties);
-        printf("DEVICE: %s\n", deviceProperties.deviceName);
 
         VkPhysicalDeviceFeatures deviceFeatures;
         vkGetPhysicalDeviceFeatures(device, &deviceFeatures);
@@ -879,7 +887,7 @@ private:
             swapChainAdequate = !swapChainSupport.formats.empty() && !swapChainSupport.presentModes.empty();
         }
 
-        return indices.isComplete() && extensionsSupported && swapChainAdequate;
+        return indices.isComplete() && extensionsSupported && swapChainAdequate; //&& (deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU) ;
 
         /*if (deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU) {
             return true;
