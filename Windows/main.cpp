@@ -790,7 +790,7 @@ private:
     }
 
     void drawFrame() {
-        printf("draw!\n");
+        //printf("draw!\n");
         vkWaitForFences(device, 1, &inFlightFence, VK_TRUE, UINT64_MAX);
         vkResetFences(device, 1, &inFlightFence);
 
@@ -1075,7 +1075,7 @@ private:
         if (vkEndCommandBuffer(commandBuffer) != VK_SUCCESS) {
             throw std::runtime_error("failed to record command buffer!");
         } else {
-            printf("recorded the command buffer ok!\n");
+            //printf("recorded the command buffer ok!\n");
         }
 
     }

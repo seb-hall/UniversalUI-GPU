@@ -1,1 +1,1 @@
-C:\Users\sebam\Documents\UniversalUI-GPU\Windows\universalui_gpu\target\debug\universalui_gpu.exe: C:\Users\sebam\Documents\UniversalUI-GPU\Windows\universalui_gpu\src\main.rs
+C:\Users\sebam\Documents\UniversalUI-GPU\Windows\universalui_gpu\target\debug\universalui_gpu.exe: C:\Users\sebam\Documents\UniversalUI-GPU\Windows\universalui_gpu\shaders\frag.spv C:\Users\sebam\Documents\UniversalUI-GPU\Windows\universalui_gpu\shaders\vert.spv C:\Users\sebam\Documents\UniversalUI-GPU\Windows\universalui_gpu\src\main.rs
