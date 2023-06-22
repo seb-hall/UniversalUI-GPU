@@ -1,3 +1,9 @@
+
+
+
+
+
+
 fn main() {
-    println!("Hello, world!");
+    println!("universalui_gpu - Rust v0.1");
 }
