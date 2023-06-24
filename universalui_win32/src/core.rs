@@ -9,6 +9,9 @@
 //
 //  src/core.rs provides some core types such as uSize, uRect etc
 
+#![allow(non_camel_case_types)]
+
+//  uPoint - a basic location in 2D space
 pub struct uPoint {
     pub x: f32,
     pub y: f32,
@@ -16,6 +19,7 @@ pub struct uPoint {
 
 impl uPoint {
 
+    //  standard init function from components
     pub fn init(x: f32, y: f32) -> Self {
         return uPoint {
             x: x,
@@ -24,7 +28,7 @@ impl uPoint {
     }
 }
 
-
+//  uSize - a basic 2D size
 pub struct uSize {
     pub width: f32,
     pub height: f32,
@@ -32,6 +36,7 @@ pub struct uSize {
 
 impl uSize {
 
+    //  standard init function from components
     pub fn init(width: f32, height: f32) -> Self {
         return uSize {
             width: width,
@@ -40,6 +45,7 @@ impl uSize {
     }
 }
 
+//  uRect - a basic 2D rectangle
 pub struct uRect {
     pub x: f32,
     pub y: f32,
@@ -49,6 +55,7 @@ pub struct uRect {
 
 impl uRect {
 
+    //  standard init function from components
     pub fn init(x: f32, y: f32, width: f32, height: f32) -> Self {
         return uRect {
             x: x,
